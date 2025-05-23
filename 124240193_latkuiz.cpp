@@ -11,7 +11,7 @@ struct Pegawai
 
 void tambahPegawai()
 {
-    FILE *file = fopen("pegawai.dat", "ab"); // Membuka file dalam mode append binary
+    FILE *file = fopen("pegawai.dat", "ab");
     if (!file)
     {
         cout << "Gagal membuka file!" << endl;
@@ -125,7 +125,7 @@ void perbaruiGaji()
             cout << "Masukkan gaji baru: ";
             cin >> p.gaji;
 
-            fseek(file, -sizeof(Pegawai), SEEK_CUR);
+            fseek(file, sizeof(Pegawai), SEEK_CUR);
             fwrite(&p, sizeof(Pegawai), 1, file);
             cout << "Gaji berhasil diperbarui.\n";
             ditemukan = true;
